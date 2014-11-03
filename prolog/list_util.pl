@@ -153,6 +153,24 @@ drop([_|T], N1, Rest) :-
 drop_while(Goal, List, Suffix) :-
     span(Goal,List,_,Suffix).
 
+    
+%% slice(?List:list, +N:nonneg, ?Sliced:list) is det.
+%
+%  Slice list into in pieces of length N.
+%
+%  ==
+%
+%  ?- slice([1,2,3,4,5,6,7], 3, Xs).
+%  Xs = [[1, 2, 3], [4, 5, 6], [7]].
+%  ==
+slice([], N, []) :-
+    N > 0.
+slice(L, N, [H|Rest]) :-
+    N > 0,
+    take(L, N, H),
+    drop(L, N, LTail),
+    slice(LTail, N, Rest).
+
 
 %% span(:Goal, +List, -Prefix, -Suffix) is det.
 %
