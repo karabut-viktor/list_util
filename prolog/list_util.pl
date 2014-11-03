@@ -156,7 +156,7 @@ drop_while(Goal, List, Suffix) :-
     
 %% slice(?List:list, +N:nonneg, ?Sliced:list) is det.
 %
-%  Slice list into in pieces of length N.
+%  Slice list into pieces of length N.
 %
 %  ==
 %
